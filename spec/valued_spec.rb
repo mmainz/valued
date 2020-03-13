@@ -1,5 +1,5 @@
 RSpec.describe Valued do
-  context 'defining a quantity value object' do
+  context 'when defining a quantity value object' do
     let(:quantity_class) do
       Class.new do
         include Valued
@@ -56,7 +56,7 @@ RSpec.describe Valued do
     end
 
     it 'does not raise when comparing to an arbitrary type' do
-      expect { instance == 1 }.to_not raise_error
+      expect { instance == 1 }.not_to raise_error
     end
 
     it 'can be converted to a hash' do

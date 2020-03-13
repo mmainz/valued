@@ -1,0 +1,84 @@
+inherit_mode:
+  merge:
+    - Exclude
+
+AllCops:
+  Exclude:
+    - db/**/*
+    - config/**/*
+    - script/**/*
+    - Rakefile
+    - Guardfile
+    - bin/*
+    - tmp/**/*
+  TargetRubyVersion: 2.6
+
+Style:
+  Enabled: false
+
+Layout:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: false
+
+Style/HashTransformValues:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
+Metrics/BlockLength:
+  CountComments: false
+  Max: 25
+  Exclude:
+    - "spec/**/*.rb"
+    - "test/**/*.rb"
+    - "Rakefile"
+    - "*.gemspec"
+    - "apps/api/application.rb"
+    - "**/*.rake"
+
+Metrics/ClassLength:
+  CountComments: false
+  Exclude:
+    - "spec/**/*.rb"
+    - "test/**/*.rb"
+
+Metrics/MethodLength:
+  Enabled: true
+  Exclude:
+    - "spec/**/*.rb"
+    - "test/**/*.rb"
+
+Metrics/ModuleLength:
+  CountComments: false
+  Exclude:
+    - "spec/**/*.rb"
+    - "test/**/*.rb"
+
+require: rubocop-rspec
+
+RSpec/DescribedClass:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MessageSpies:
+  Enabled: false
+
+RSpec/MessageChain:
+  Enabled: false
+
+RSpec/AnyInstance:
+  Enabled: false
