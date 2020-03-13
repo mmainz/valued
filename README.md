@@ -53,15 +53,17 @@ instance of it with a hash:
 
 ```ruby
 quantity = Quantity.new(unit: 'm', amount: 2)
-p quantity.amount # => 2
-p quantity.unit # => 'm'
+p quantity.amount
+=> 2
+p quantity.unit
+=> 'm'
 ```
 
 If you omit a parameter in the constructor, it is set to `nil`.
 
 ```ruby
 quantity = Quantity.new(amount: 2)
-p quantity.unit # => nil
+p quantity.unit
 => nil
 ```
 
@@ -71,10 +73,13 @@ Classes defined with valued automatically implement `==`, `eql?`, `hash`,
 ```ruby
 quantity = Quantity.new(amount: 2, unit: 'm')
 second_quantity = Quantity.new(amount: 2, unit: 'm')
-quantity == second_quantity # => true
+quantity == second_quantity
+=> true
 
-quantity.to_h # => {:amount=>2, :unit=>"m"}
-p quantity # => #<Quantity amount=2 unit="m">
+quantity.to_h
+=> {:amount=>2, :unit=>"m"}
+p quantity
+=> #<Quantity amount=2 unit="m">
 ```
 
 ## License
