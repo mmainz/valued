@@ -6,14 +6,14 @@ Gem::Specification.new do |spec|
   spec.name = 'valued'
   spec.version = Valued::VERSION
   spec.authors = ['Mario Mainz']
-  spec.email = %w[mario.mainz@invision.de]
+  spec.email = %w[mainz.mario@googlemail.com]
 
   spec.summary = 'A Ruby gem that makes it easy to create value objects.'
-  spec.homepage = 'https://github.com/ivx/valued'
+  spec.homepage = 'https://github.com/mmainz/valued'
   spec.license = 'MIT'
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://github.com/ivx/valued'
+  spec.metadata['source_code_uri'] = 'https://github.com/mmainz/valued'
 
   spec.files =
     Dir.chdir(File.expand_path('..', __FILE__)) do
