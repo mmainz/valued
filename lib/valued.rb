@@ -8,12 +8,15 @@ module Valued
     end
   end
 
-  def self.define(*attrs)
-    Class.new do
-      include Valued
+  def self.define(*attrs, &block)
+    klass =
+      Class.new do
+        include Valued
 
-      attributes(*attrs)
-    end
+        attributes(*attrs)
+      end
+    klass.class_eval(&block) if block_given?
+    klass
   end
 
   def self.included(base)

@@ -5,6 +5,10 @@ RSpec.describe Valued do
         include Valued
 
         attributes :unit, :amount
+
+        def custom_method
+          :custom_method
+        end
       end
     end
     let(:instance) { quantity_class.new(unit: 'm', amount: 2) }
@@ -87,10 +91,20 @@ RSpec.describe Valued do
       allow(instance).to receive(:class).and_return('Quantity')
       expect(instance.inspect).to eq('#<Quantity unit="m" amount=2>')
     end
+
+    it 'allows defining of custom methods' do
+      expect(instance.custom_method).to eq(:custom_method)
+    end
   end
 
   describe '#define' do
-    let(:quantity_class) { Valued.define(:unit, :amount) }
+    let(:quantity_class) do
+      Valued.define(:unit, :amount) do
+        def custom_method
+          :custom_method
+        end
+      end
+    end
     let(:instance) { quantity_class.new(unit: 'm', amount: 2) }
 
     it 'defines an initializer and sets defined attributes' do
@@ -108,6 +122,10 @@ RSpec.describe Valued do
       quantity = quantity_class.new(amount: 1)
 
       expect(quantity.unit).to eq(nil)
+    end
+
+    it 'allows defining of custom methods' do
+      expect(instance.custom_method).to eq(:custom_method)
     end
   end
 end
