@@ -88,4 +88,26 @@ RSpec.describe Valued do
       expect(instance.inspect).to eq('#<Quantity unit="m" amount=2>')
     end
   end
+
+  describe '#define' do
+    let(:quantity_class) { Valued.define(:unit, :amount) }
+    let(:instance) { quantity_class.new(unit: 'm', amount: 2) }
+
+    it 'defines an initializer and sets defined attributes' do
+      expect(instance.amount).to eq(2)
+      expect(instance.unit).to eq('m')
+    end
+
+    it 'can be initialized without params' do
+      empty_instance = quantity_class.new
+      expect(empty_instance.unit).to eq(nil)
+      expect(empty_instance.amount).to eq(nil)
+    end
+
+    it 'sets a value to nil if omitted in construction' do
+      quantity = quantity_class.new(amount: 1)
+
+      expect(quantity.unit).to eq(nil)
+    end
+  end
 end

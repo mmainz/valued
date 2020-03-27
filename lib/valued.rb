@@ -8,6 +8,14 @@ module Valued
     end
   end
 
+  def self.define(*attrs)
+    Class.new do
+      include Valued
+
+      attributes(*attrs)
+    end
+  end
+
   def self.included(base)
     base.extend(ClassMethods)
   end
