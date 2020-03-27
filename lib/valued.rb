@@ -3,7 +3,15 @@ require 'valued/version'
 module Valued
   module ClassMethods
     def attributes(*attributes)
-      attributes.each { |attr| attr_reader attr }
+      attributes.each do |attr|
+        if attr.to_s.end_with?('?')
+          define_method(attr) do
+            instance_variable_get("@#{attr.to_s.chomp('?')}")
+          end
+        else
+          attr_reader attr
+        end
+      end
       define_method('_attributes') { attributes }
     end
   end
@@ -27,7 +35,7 @@ module Valued
     _attributes.each do |attribute|
       if attributes.key?(attribute)
         instance_variable_set(
-          "@#{attribute}",
+          "@#{attribute.to_s.chomp('?')}",
           attributes.fetch(attribute).freeze
         )
       end

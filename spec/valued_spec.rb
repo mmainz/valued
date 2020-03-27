@@ -20,6 +20,13 @@ RSpec.describe Valued do
       expect(instance.unit).to eq('m')
     end
 
+    it 'allows attributes with question marks' do
+      klass = Valued.define(:valid?)
+      instance = klass.new(valid?: true)
+
+      expect(instance.valid?).to eq(true)
+    end
+
     it 'can be initialized without params' do
       empty_instance = quantity_class.new
       expect(empty_instance.unit).to eq(nil)
