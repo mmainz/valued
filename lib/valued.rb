@@ -1,3 +1,4 @@
+require 'valued/mutable'
 require 'valued/version'
 
 module Valued
