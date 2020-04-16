@@ -82,6 +82,28 @@ p quantity
 => #<Quantity amount=2 unit="m">
 ```
 
+For a mutable object, just use `Valued::Mutable` instead of `Valued`.
+
+```ruby
+require 'valued'
+
+class Quantity
+  include Valued::Mutable
+
+  attributes :unit, :amount
+end
+```
+
+By doing that, you also get a setter for every attribute.
+
+```ruby
+quantity = Quantity.new
+quantity.amount = 2
+quantity.unit = 'm'
+p quantity
+=> #<Quantity amount=2 unit="m">
+```
+
 ## License
 
 The gem is available as open source under the terms of the
