@@ -2,8 +2,14 @@ require 'valued/version'
 
 module Valued
   module ClassMethods
-    def attributes(*attributes)
-      attributes.each do |attr|
+    def self.normalized_attributes(attributes)
+      attributes.each_with_object(attributes) do |attr, result|
+        result << attr.to_s.chomp('?').to_sym if attr.to_s.end_with?('?')
+      end
+    end
+
+    def self.define_method(attr, klass)
+      klass.class_eval do
         if attr.to_s.end_with?('?')
           define_method(attr) do
             instance_variable_get("@#{attr.to_s.chomp('?')}")
@@ -12,7 +18,14 @@ module Valued
           attr_reader attr
         end
       end
-      define_method('_attributes') { attributes }
+    end
+
+    def attributes(*attributes)
+      attributes.each { |attr| Valued::ClassMethods.define_method(attr, self) }
+      define_method('_attributes') do
+        Valued::ClassMethods.normalized_attributes(attributes)
+      end
+      private :_attributes
     end
   end
 

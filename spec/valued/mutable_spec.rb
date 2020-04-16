@@ -1,8 +1,10 @@
-RSpec.describe Valued do
+require 'valued/mutable'
+
+RSpec.describe Valued::Mutable do
   context 'when defining a quantity value object' do
     let(:quantity_class) do
       Class.new do
-        include Valued
+        include Valued::Mutable
 
         attributes :unit, :amount
 
@@ -23,22 +25,30 @@ RSpec.describe Valued do
 
     it 'has only the explicitly defined methods' do
       expect(instance.public_methods(false)).to match_array(
-        %i[unit amount custom_method]
+        %i[unit unit= amount amount= custom_method]
       )
     end
 
     it 'allows attributes with question marks' do
-      klass = Valued.define(:valid?)
+      klass = Valued::Mutable.define(:valid?)
       instance = klass.new(valid?: true)
 
       expect(instance.valid?).to eq(true)
     end
 
     it 'allows omitting the question mark on initialization' do
-      klass = Valued.define(:valid?)
+      klass = Valued::Mutable.define(:valid?)
       instance = klass.new(valid: true)
 
       expect(instance.valid?).to eq(true)
+    end
+
+    it 'defines setter for attributes with question marks' do
+      klass = Valued::Mutable.define(:valid?)
+      instance = klass.new(valid?: true)
+      instance.valid = false
+
+      expect(instance.valid?).to eq(false)
     end
 
     it 'can be initialized without params' do
@@ -53,12 +63,14 @@ RSpec.describe Valued do
       expect(quantity.unit).to eq(nil)
     end
 
-    it 'does not allow to set attributes' do
-      expect { instance.amount = 3 }.to raise_error(NoMethodError)
+    it 'does allow to set attributes' do
+      instance.amount = 3
+      expect(instance.amount).to eq(3)
     end
 
-    it 'does not allow mutation of values' do
-      expect { instance.unit.upcase! }.to raise_error(FrozenError)
+    it 'does allow mutation of values' do
+      instance.unit.upcase!
+      expect(instance.unit).to eq('M')
     end
 
     it 'does not allow to set arbitrary attributes on construction' do
@@ -120,7 +132,7 @@ RSpec.describe Valued do
 
   describe '#define' do
     let(:quantity_class) do
-      Valued.define(:unit, :amount) do
+      Valued::Mutable.define(:unit, :amount) do
         def custom_method
           :custom_method
         end
