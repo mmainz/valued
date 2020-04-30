@@ -61,6 +61,12 @@ RSpec.describe Valued do
       expect { instance.unit.upcase! }.to raise_error(FrozenError)
     end
 
+    it 'provides update function to create a dup with updated attributes' do
+      expect(instance.update(unit: 'yard')).to eq(
+        quantity_class.new(amount: 2, unit: 'yard')
+      )
+    end
+
     it 'does not allow to set arbitrary attributes on construction' do
       expect(instance.instance_variable_get('@moep')).to be_nil
       expect { instance.moep }.to raise_error(NoMethodError)

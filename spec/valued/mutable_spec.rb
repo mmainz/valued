@@ -51,6 +51,12 @@ RSpec.describe Valued::Mutable do
       expect(instance.valid?).to eq(false)
     end
 
+    it 'provides update function to create a dup with updated attributes' do
+      expect(instance.update(unit: 'yard')).to eq(
+        quantity_class.new(amount: 2, unit: 'yard')
+      )
+    end
+
     it 'can be initialized without params' do
       empty_instance = quantity_class.new
       expect(empty_instance.unit).to eq(nil)

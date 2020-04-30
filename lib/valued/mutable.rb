@@ -57,6 +57,14 @@ module Valued
       end
     end
 
+    def update(new_attributes)
+      self.class.new(
+        _attributes.each_with_object({}) do |attribute, result|
+          result[attribute] = new_attributes[attribute] || self.send(attribute)
+        end
+      )
+    end
+
     def ==(other)
       _attributes.all? do |attribute|
         other.respond_to?(attribute) && send(attribute) == other.send(attribute)
