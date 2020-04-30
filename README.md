@@ -82,7 +82,18 @@ p quantity
 => #<Quantity amount=2 unit="m">
 ```
 
-For a mutable object, just use `Valued::Mutable` instead of `Valued`.
+You can create a duplicate of your object with updated attributes by using `update`.
+
+```ruby
+quantity = Quantity.new(unit: 'm', amount: 2)
+p quantity
+=> #<Quantity amount=2 unit="m">
+updated_quantity = quantity.update(unit: 'yard')
+p updated_quantity
+=> #<Quantity amount=2 unit="yard">
+```
+
+If you really need a mutable object, just use `Valued::Mutable` instead of `Valued`.
 
 ```ruby
 require 'valued'
