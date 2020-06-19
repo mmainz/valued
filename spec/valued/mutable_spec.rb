@@ -29,28 +29,6 @@ RSpec.describe Valued::Mutable do
       )
     end
 
-    it 'allows attributes with question marks' do
-      klass = Valued::Mutable.define(:valid?)
-      instance = klass.new(valid?: true)
-
-      expect(instance.valid?).to eq(true)
-    end
-
-    it 'allows omitting the question mark on initialization' do
-      klass = Valued::Mutable.define(:valid?)
-      instance = klass.new(valid: true)
-
-      expect(instance.valid?).to eq(true)
-    end
-
-    it 'defines setter for attributes with question marks' do
-      klass = Valued::Mutable.define(:valid?)
-      instance = klass.new(valid?: true)
-      instance.valid = false
-
-      expect(instance.valid?).to eq(false)
-    end
-
     it 'provides update function to create a dup with updated attributes' do
       expect(instance.update(unit: 'yard')).to eq(
         quantity_class.new(amount: 2, unit: 'yard')
