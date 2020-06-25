@@ -1,13 +1,9 @@
 module Valued
   module Mutable
     module ClassMethods
-      def self.define_method(attr, klass)
-        klass.class_eval { attr_accessor attr }
-      end
-
       def attributes(*attributes)
-        attributes.each do |attr|
-          Valued::Mutable::ClassMethods.define_method(attr, self)
+        attributes.each do |attribute|
+          self.class_eval { attr_accessor attribute }
         end
         define_method('_attributes') { attributes }
         private :_attributes
