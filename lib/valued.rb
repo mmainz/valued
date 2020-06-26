@@ -3,12 +3,8 @@ require 'valued/version'
 
 module Valued
   module ClassMethods
-    def self.define_method(attr, klass)
-      klass.class_eval { attr_reader attr }
-    end
-
     def attributes(*attributes)
-      attributes.each { |attr| Valued::ClassMethods.define_method(attr, self) }
+      attributes.each { |attribute| self.class_eval { attr_reader attribute } }
       define_method('_attributes') { attributes }
       private :_attributes
     end
