@@ -39,7 +39,11 @@ module Valued
   def update(new_attributes)
     self.class.new(
       _attributes.each_with_object({}) do |attribute, result|
-        result[attribute] = new_attributes[attribute] || self.send(attribute)
+        if new_attributes.key?(attribute)
+          result[attribute] = new_attributes[attribute]
+        else
+          result[attribute] = self.send(attribute)
+        end
       end
     )
   end
