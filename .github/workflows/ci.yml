@@ -2,35 +2,34 @@ name: Continuous Integration
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
         ruby-version: ['2.6', '2.7', '3.0']
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup Node.js 🖲
-      uses: actions/setup-node@v2.4.0
-      with:
-        node-version: 16.x
-        check-latest: true
-    - run: npm ci
-        
-    - name: Check formatting 🔍
-      run: npm run lint
+      - uses: actions/checkout@v2
+      - name: Setup Node.js 🖲
+        uses: actions/setup-node@v2.4.0
+        with:
+          node-version: 16.x
+          check-latest: true
+      - run: npm ci
 
-    - name: Set up Ruby 💎
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby-version }}
-        bundler-cache: true
-        
-    - name: Run tests ⚙️
-      run: bundle exec rake
+      - name: Check formatting 🔍
+        run: npm run lint
+
+      - name: Set up Ruby 💎
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true
+
+      - name: Run tests ⚙️
+        run: bundle exec rake
