@@ -1,0 +1,12 @@
+{
+  "name": "valued",
+  "scripts": {
+    "prettify": "prettier \"**/*.{ru,rb,yml,yaml,md}\" --ignore-path=\".gitignore\"",
+    "lint": "npm run prettify -- --check",
+    "format": "npm run prettify -- --write"
+  },
+  "devDependencies": {
+    "@prettier/plugin-ruby": "^1.6.1",
+    "prettier": "^2.3.2"
+  }
+}

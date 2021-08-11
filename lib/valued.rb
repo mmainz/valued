@@ -70,9 +70,9 @@ module Valued
 
   def inspect
     inspected_attributes =
-      _attributes.map do |attribute|
-        "#{attribute}=#{send(attribute).inspect}"
-      end.join(' ')
+      _attributes
+        .map { |attribute| "#{attribute}=#{send(attribute).inspect}" }
+        .join(' ')
     "#<#{self.class} #{inspected_attributes}>"
   end
 end
