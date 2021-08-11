@@ -33,11 +33,3 @@ jobs:
 
       - name: Run tests ⚙️
         run: bundle exec rake
-
-      - name: Release Gem 📦
-        if: contains(github.ref, 'refs/tags/v')
-        uses: cadwallion/publish-rubygems-action@master
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          RUBYGEMS_API_KEY: ${{secrets.RUBYGEMS_API_KEY}}
-          RELEASE_COMMAND: rake release
