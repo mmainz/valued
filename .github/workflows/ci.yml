@@ -15,12 +15,12 @@ jobs:
         ruby-version: ['2.6', '2.7', '3.0']
 
     steps:
+    - uses: actions/checkout@v2
     - name: Setup Node.js 🖲
       uses: actions/setup-node@v2.4.0
       with:
         node-version: 16.x
         check-latest: true
-        cache: npm
     - run: npm ci
         
     - name: Check formatting 🔍
