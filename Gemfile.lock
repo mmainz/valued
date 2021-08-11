@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    valued (0.4.0)
+    valued (0.4.1)
 
 GEM
   remote: https://rubygems.org/
@@ -53,4 +53,4 @@ DEPENDENCIES
   valued!
 
 BUNDLED WITH
-   2.2.3
+   2.2.22
