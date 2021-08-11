@@ -21,7 +21,6 @@ jobs:
         node-version: 16.x
         check-latest: true
         cache: npm
-        cache-dependency-path: package-lock.json
     - run: npm ci
         
     - name: Check formatting 🔍
