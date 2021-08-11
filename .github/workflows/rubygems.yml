@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: Release to rubygems.org
 
 on:
   push:
