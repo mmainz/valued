@@ -148,4 +148,23 @@ RSpec.shared_examples 'a Valued' do |valued_module|
       expect(instance.custom_method).to eq(:custom_method)
     end
   end
+
+  describe '#to_h' do
+    it 'returns the expected hash' do
+      hash = instance.to_h
+      expect(hash).to eq({ amount: 2, unit: 'm' })
+    end
+
+    it 'accepts a block' do
+      hash =
+        instance.to_h do |attribute, value|
+          if attribute == :amount
+            ['AMOUNT_TIMES_10', value * 10]
+          else
+            [attribute, value]
+          end
+        end
+      expect(hash).to eq({ 'AMOUNT_TIMES_10' => 20, :unit => 'm' })
+    end
+  end
 end

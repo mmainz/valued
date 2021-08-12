@@ -63,8 +63,15 @@ module Valued
   end
 
   def to_h
-    _attributes.each_with_object({}) do |attribute, hash|
-      hash[attribute] = send(attribute)
+    if block_given?
+      _attributes.each_with_object({}) do |attribute, hash|
+        hash_key, hash_value = yield(attribute, send(attribute))
+        hash[hash_key] = hash_value
+      end
+    else
+      _attributes.each_with_object({}) do |attribute, hash|
+        hash[attribute] = send(attribute)
+      end
     end
   end
 
