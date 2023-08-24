@@ -6,7 +6,6 @@ SimpleCov.start { add_filter '/spec/' }
 
 require 'bundler/setup'
 require 'valued'
-require 'valued/shared_examples/valued_shared_examples'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
