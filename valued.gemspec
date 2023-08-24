@@ -17,10 +17,10 @@ Gem::Specification.new do |spec|
 
   spec.files =
     Dir.chdir(File.expand_path('..', __FILE__)) do
-    `git ls-files -z`.split("\x0").reject do |f|
-      f.match(%r{^(test|spec|features)/})
+      `git ls-files -z`.split("\x0").reject do |f|
+        f.match(%r{^(test|spec|features)/})
+      end
     end
-  end
 
   spec.bindir = 'exe'
   spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
@@ -31,4 +31,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rubocop', '~> 0.80'
   spec.add_development_dependency 'rubocop-rspec', '~> 1.38'
+  spec.add_development_dependency 'simplecov', '~> 0.22'
+  spec.add_development_dependency 'simplecov-lcov', '~> 0.8'
 end
