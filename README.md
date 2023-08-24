@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mmainz/valued.svg?branch=master)](https://travis-ci.org/mmainz/valued)
+[![Coverage Status](https://coveralls.io/repos/github/mmainz/valued/badge.svg?branch=master)](https://coveralls.io/github/mmainz/valued?branch=master)
 
 # Valued
 
@@ -82,7 +82,8 @@ p quantity
 => #<Quantity amount=2 unit="m">
 ```
 
-You can create a duplicate of your object with updated attributes by using `update`.
+You can create a duplicate of your object with updated attributes by using
+`update`.
 
 ```ruby
 quantity = Quantity.new(unit: 'm', amount: 2)
@@ -93,7 +94,8 @@ p updated_quantity
 => #<Quantity amount=2 unit="yard">
 ```
 
-If you really need a mutable object, just use `Valued::Mutable` instead of `Valued`.
+If you really need a mutable object, just use `Valued::Mutable` instead of
+`Valued`.
 
 ```ruby
 require 'valued'
