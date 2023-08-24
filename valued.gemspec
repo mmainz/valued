@@ -28,10 +28,14 @@ Gem::Specification.new do |spec|
   spec.require_paths = %w[lib]
 
   spec.add_development_dependency 'bundler', '~> 2.0'
+  spec.add_development_dependency 'prettier_print', '>= 1.2'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rubocop', '~> 0.80'
   spec.add_development_dependency 'rubocop-rspec', '~> 1.38'
-  spec.add_development_dependency 'simplecov', '~> 0.22'
+  spec.add_development_dependency 'rubocop', '~> 0.80'
   spec.add_development_dependency 'simplecov-lcov', '~> 0.8'
+  spec.add_development_dependency 'simplecov', '~> 0.22'
+  spec.add_development_dependency 'syntax_tree-haml', '>= 4.0'
+  spec.add_development_dependency 'syntax_tree-rbs', '>= 1.0'
+  spec.add_development_dependency 'syntax_tree', '>= 6.1'
 end

@@ -9,13 +9,19 @@ GEM
     ast (2.4.2)
     diff-lcs (1.5.0)
     docile (1.4.0)
+    haml (6.1.2)
+      temple (>= 0.8.2)
+      thor
+      tilt
     parallel (1.23.0)
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
+    prettier_print (1.2.1)
     racc (1.7.1)
     rainbow (3.1.1)
     rake (13.0.6)
+    rbs (3.2.0)
     regexp_parser (2.8.1)
     rexml (3.2.6)
     rspec (3.12.0)
@@ -53,6 +59,19 @@ GEM
     simplecov-html (0.12.3)
     simplecov-lcov (0.8.0)
     simplecov_json_formatter (0.1.4)
+    syntax_tree (6.1.1)
+      prettier_print (>= 1.2.0)
+    syntax_tree-haml (4.0.3)
+      haml (>= 5.2)
+      prettier_print (>= 1.2.1)
+      syntax_tree (>= 6.0.0)
+    syntax_tree-rbs (1.0.0)
+      prettier_print
+      rbs
+      syntax_tree (>= 2.0.1)
+    temple (0.10.2)
+    thor (1.2.2)
+    tilt (2.2.0)
     unicode-display_width (1.8.0)
 
 PLATFORMS
@@ -60,12 +79,16 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.0)
+  prettier_print (>= 1.2)
   rake (~> 13.0)
   rspec (~> 3.0)
   rubocop (~> 0.80)
   rubocop-rspec (~> 1.38)
   simplecov (~> 0.22)
   simplecov-lcov (~> 0.8)
+  syntax_tree (>= 6.1)
+  syntax_tree-haml (>= 4.0)
+  syntax_tree-rbs (>= 1.0)
   valued!
 
 BUNDLED WITH
