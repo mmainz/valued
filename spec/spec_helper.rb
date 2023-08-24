@@ -1,3 +1,9 @@
+require 'simplecov'
+require 'simplecov-lcov'
+SimpleCov::Formatter::LcovFormatter.config.report_with_single_file = true
+SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
+SimpleCov.start { add_filter '/spec/' }
+
 require 'bundler/setup'
 require 'valued'
 require 'valued/shared_examples/valued_shared_examples'

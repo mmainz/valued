@@ -33,3 +33,6 @@ jobs:
 
       - name: Run tests ⚙️
         run: bundle exec rake
+
+      - name: Coverage 📊
+        uses: coverallsapp/github-action@v2
