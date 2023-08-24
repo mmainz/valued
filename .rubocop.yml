@@ -11,7 +11,7 @@ AllCops:
     - Guardfile
     - bin/*
     - tmp/**/*
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 3.0
 
 Style:
   Enabled: false

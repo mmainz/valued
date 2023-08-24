@@ -4,6 +4,7 @@ require 'valued/version'
 
 Gem::Specification.new do |spec|
   spec.name = 'valued'
+  spec.required_ruby_version = '>= 3.0.0'
   spec.version = Valued::VERSION
   spec.authors = ['Mario Mainz']
   spec.email = %w[mainz.mario@googlemail.com]
