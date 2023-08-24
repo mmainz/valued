@@ -11,10 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ["3.2"]
+        ruby-version: ['3.2']
 
     steps:
       - uses: actions/checkout@v2
+
       - name: Setup Node.js 🖲
         uses: actions/setup-node@v2.4.0
         with:
@@ -22,14 +23,14 @@ jobs:
           check-latest: true
       - run: npm ci
 
-      - name: Check formatting 🔍
-        run: npm run lint
-
       - name: Setup Ruby 💎
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
+
+      - name: Check formatting 🔍
+        run: npm run lint
 
       - name: Run tests ⚙️
         run: bundle exec rake
